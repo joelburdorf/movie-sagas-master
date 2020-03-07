@@ -14,6 +14,12 @@ class HomeList extends Component {
         return (
             <div className="App">
                 <p>This is HomeList</p>
+                <ul>
+                    {this.props.reduxState.movies.map(flick => (<li key={flick.id}>{flick.title}
+                        <img src={flick.poster}></img>
+                        </li>))}
+
+                </ul>
             </div>
         );
     }
