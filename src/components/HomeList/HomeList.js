@@ -9,14 +9,21 @@ class HomeList extends Component {
     getMovies() {
         this.props.dispatch({ type: 'FETCH_MOVIES' });
     }
+
+    imageClick = (event) => {
+        //console.log('in imageClick');
+        event.preventDefault();
+        this.props.history.push('/details')
+    }
+
     // Renders the entire app on the DOM
     render() {
         return (
             <div className="App">
-                <p>This is HomeList</p>
+                <p>Movie Selections</p>
                 <ul>
                     {this.props.reduxState.movies.map(flick => (<li key={flick.id}>{flick.title}
-                        <img src={flick.poster}></img>
+                        <img src={flick.poster} alt={flick.title} onClick={this.imageClick}></img>
                         </li>))}
 
                 </ul>
