@@ -16,9 +16,13 @@ class Details extends Component {
 
     // Renders the entire app on the DOM
     render() {
+        console.log('in details', this.props.location.state)
         return (
             <div className="App">
                 <p>Movie Details</p>
+                <h1>{this.props.location.state.title}</h1>
+                <img src={this.props.location.state.poster}></img>
+                <p>{this.props.location.state.description}</p>
                 <button onClick={this.backBtn}>Back</button>
                 <button onClick={this.editBtn}>Edit</button>
             </div>
