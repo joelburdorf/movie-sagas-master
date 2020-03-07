@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import HomeList from '../HomeList/HomeList.js';
+import Details from '../Details/Details.js';
+import Edit from '../Edit/Edit.js';
 import './App.css';
 
 class App extends Component {
@@ -7,6 +10,9 @@ class App extends Component {
     return (
       <div className="App">
         <p>Empty Page</p>
+        <HomeList />
+        <Details />
+        <Edit />
       </div>
     );
   }
