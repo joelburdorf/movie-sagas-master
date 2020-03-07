@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class HomeList extends Component {
+
     componentDidMount() {
         this.getMovies();
     }
@@ -11,6 +12,7 @@ class HomeList extends Component {
     }
 
     imageClick = (event, flick) => {
+        event.preventDefault();
         //console.log('in imageClick');
         this.props.history.push({
             pathname: '/details',
@@ -31,7 +33,7 @@ class HomeList extends Component {
             <div className="App">
                 <p>Movie Selections</p>
                 <ul>
-                    {this.props.reduxState.movies.map(flick => (<li key={flick.id}><b>{flick.title}</b> <br /> <br />
+                    {this.props.reduxState.movies.map(flick => (<li key={flick.id}><h1>{flick.title}</h1> <br /> <br />
                         <img src={flick.poster} alt={flick.title} onClick={(event) => this.imageClick(event, flick)}></img>
                         <br /> <br />{flick.description}<br /> <br /><br /> <br />
                         </li>))}

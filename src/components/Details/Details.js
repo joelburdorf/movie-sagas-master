@@ -3,16 +3,22 @@ import { connect } from 'react-redux';
 
 class Details extends Component {
  
-    backBtn = (event) => {
-        
-        event.preventDefault();
+    backBtn = () => {
         this.props.history.push('/')
     }
 
     editBtn = (event) => {
         console.log('in editBtn');
-        
-    }
+        this.props.history.push({
+            pathname: '/edit',
+            state: {
+                id: event.id,
+                title: event.title,
+                poster: event.poster,
+                description: event.description
+            }
+        });
+    };
 
     // Renders the entire app on the DOM
     render() {
@@ -21,15 +27,13 @@ class Details extends Component {
             <div className="App">
                 <p>Movie Details</p>
                 <h1>{this.props.location.state.title}</h1>
-                <img src={this.props.location.state.poster}></img>
                 <p>{this.props.location.state.description}</p>
                 <button onClick={this.backBtn}>Back</button>
-                <button onClick={this.editBtn}>Edit</button>
+                <button onClick={() => this.editBtn(this.props.location.state)}>Edit</button>
             </div>
         );
     }
 }
-
 
 
 // Makes our reducers available in our component
