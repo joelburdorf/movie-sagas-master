@@ -16,12 +16,24 @@ import Axios from 'axios';
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchMovies);
+    yield takeEvery('INPUT_UPDATE', putUpdate);
 }
 
 function* fetchMovies() {
     const getResponse = yield Axios.get('/movies');
     console.log('element array', getResponse);
     yield put({ type: 'SET_MOVIES', payload: getResponse.data })
+}
+
+
+function* putUpdate(edit) {
+    console.log("in saga PUT with: ", edit.payload);
+    try {
+        yield Axios.put(`/movies/${edit.payload.sendId}`, edit.payload);
+        yield put({ type: "FETCH_MOVIES" });
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 // Create sagaMiddleware
