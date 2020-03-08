@@ -6,9 +6,9 @@ class Edit extends Component {
 
     state = {
         update: {
-            description: '',
+            description: this.props.location.state.description,
             sendId: '',
-            genre: '',
+            title: this.props.location.state.title,
         }
     }
 
@@ -25,7 +25,7 @@ class Edit extends Component {
         })
     }
 
-    handleDescriptionChange = (event, description) => {
+    handleDescriptionChange = (description, event) => {
         console.log('event happended in handleDescriptionChange', event.target.value)
         this.setState({
             update: {
@@ -34,15 +34,15 @@ class Edit extends Component {
             }
         });
     }
-    // handleGenreChange = (event, genre) => {
-    //     console.log('event happended in handleGenreChange', event.target.value)
-    //     this.setState({
-    //         update: {
-    //             genre: event.target.value,
-    //             sendId: this.props.location.state.id,
-    //         }
-    //     });
-    // }
+    handleTitleChange = (title, event) => {
+        console.log('event happended in handleTitleChange', event.target.value)
+        this.setState({
+            update: {
+                title: event.target.value,
+                sendId: this.props.location.state.id,
+            }
+        });
+    }
 
     saveChange = event => {
         event.preventDefault();
@@ -50,7 +50,7 @@ class Edit extends Component {
         this.setState({
             update: {
                 description: '',
-                genre: ''
+                title: ''
             } 
         });
         this.props.history.push('/')
@@ -64,14 +64,12 @@ class Edit extends Component {
                 <h1>{this.props.location.state.title}</h1>
                 <p>{this.props.location.state.description}</p>
                 <form>
-                    <textarea placeholder="Change Description" value={this.state.update.description}
-                        onChange={(event) => this.handleDescriptionChange(event, 'description')}>
-
+                    <textarea rows="5" cols="50" placeholder="Change Description" value={this.state.update.description || ""}
+                        onChange={(event) => this.handleDescriptionChange('description', event)}>
                     </textarea>
                 </form>
-              
-                {/* <input type='text' placeholder="Change Genre" name="genre" value={this.state.update.genre}
-                    onChange={(event) => this.handleGenreChange(event, 'genre')}></input> */}
+                <input placeholder="Change Title" value={this.state.update.title || ""}
+                    onChange={(event) => this.handleTitleChange('title', event)}></input>
                 <button onClick={this.cancelBtn}>Cancel</button>
                 <button onClick={this.saveChange}>Save</button>
             </div>

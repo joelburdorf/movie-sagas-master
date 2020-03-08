@@ -6,11 +6,11 @@ class HomeList extends Component {
     componentDidMount() {
         this.getMovies();
     }
-
+//dispatch call to sagas FETCH_MOVIES
     getMovies() {
         this.props.dispatch({ type: 'FETCH_MOVIES' });
     }
-
+//pass props with object to path /details
     imageClick = (event, flick) => {
         event.preventDefault();
         //console.log('in imageClick');
@@ -27,7 +27,7 @@ class HomeList extends Component {
     };
 
 
-    // Renders the entire app on the DOM
+    // Map through movies and add each to the DOM
     render() {
         return (
             <div className="App">
@@ -37,7 +37,6 @@ class HomeList extends Component {
                         <img src={flick.poster} alt={flick.title} onClick={(event) => this.imageClick(event, flick)}></img>
                         <br /> <br />{flick.description}<br /> <br /><br /> <br />
                         </li>))}
-
                 </ul>
             </div>
         );

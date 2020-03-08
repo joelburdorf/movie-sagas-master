@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
 
-
+//GET movies from Db
 router.get('/', (req, res) => {
     // 'SELECT * FROM movies'
     const queryText = 'SELECT * FROM movies JOIN genre_reference_table ON movies.id = genre_reference_table.movie_id JOIN genres ON genres.id = genre_reference_table.genre_id ORDER BY movies.id;';

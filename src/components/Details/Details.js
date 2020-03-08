@@ -7,6 +7,7 @@ class Details extends Component {
         this.props.history.push('/')
     }
 
+    //pass props with object to path /edit
     editBtn = (event) => {
         console.log('in editBtn');
         this.props.history.push({

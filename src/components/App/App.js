@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route} from 'react-router-dom';
 import './App.css';
 
 class App extends Component {
-  // Renders the entire app on the DOM
+  // SET routes and routes to each component
   render() {
     return (
       <Router>
