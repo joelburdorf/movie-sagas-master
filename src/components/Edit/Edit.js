@@ -2,16 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class Edit extends Component {
-    // Renders the entire app on the DOM
-
+    // set state to values from before
     state = {
         update: {
             description: this.props.location.state.description,
-            sendId: '',
+            sendId: this.props.location.state.id,
             title: this.props.location.state.title,
         }
     }
-
+//move back to /details need to pass props
     cancelBtn = () => {
         this.props.history.push({
             pathname: '/details',
@@ -25,28 +24,15 @@ class Edit extends Component {
         })
     }
 
-    handleDescriptionChange = (description, event) => {
-        console.log('event happended in handleDescriptionChange', event.target.value)
+    //function to change the title and description
+    handleChange = (event, propertyName) => {
+        console.log('event happended in handleChange', event.target.value)
         this.setState({
-            update: {
-                 description: event.target.value,
-                 sendId: this.props.location.state.id,
-                 title: this.props.location.state.title,
+            update: { ...this.state.update,
+                [propertyName]: event.target.value, 
             }
         });
     }
-    handleTitleChange = (title, event) => {
-        console.log('event happended in handleTitleChange', event.target.value)
-        this.setState({
-            update: {
-                description: this.props.location.state.description,
-                sendId: this.props.location.state.id,
-                title: event.target.value, 
-            }
-        });
-    }
-
-
 
     saveChange = event => {
         event.preventDefault();
@@ -70,11 +56,11 @@ class Edit extends Component {
                 <p>{this.props.location.state.description}</p>
                 <form>
                     <textarea rows="5" cols="50" placeholder="Change Description" value={this.state.update.description || ""}
-                        onChange={(event) => this.handleDescriptionChange('description', event)}>
+                        onChange={(event) => this.handleChange(event, 'description')}>
                     </textarea>
                 </form>
                 <input placeholder="Change Title" value={this.state.update.title || ""}
-                    onChange={(event) => this.handleTitleChange('title', event)}></input>
+                    onChange={(event) => this.handleChange(event, 'title')}></input>
                 <button onClick={this.cancelBtn}>Cancel</button>
                 <button onClick={this.saveChange}>Save</button>
             </div>
