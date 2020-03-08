@@ -31,6 +31,7 @@ class Edit extends Component {
             update: {
                  description: event.target.value,
                  sendId: this.props.location.state.id,
+                 title: this.props.location.state.title,
             }
         });
     }
@@ -38,11 +39,14 @@ class Edit extends Component {
         console.log('event happended in handleTitleChange', event.target.value)
         this.setState({
             update: {
-                title: event.target.value,
+                description: this.props.location.state.description,
                 sendId: this.props.location.state.id,
+                title: event.target.value, 
             }
         });
     }
+
+
 
     saveChange = event => {
         event.preventDefault();
@@ -56,8 +60,9 @@ class Edit extends Component {
         this.props.history.push('/')
     }
     
+    //Display the title, description, and allow user to change both
     render() {
-        //console.log('in edit', this.props.location.state)
+        // console.log('in edit', this.props.location.state)
         return (
             <div className="App">
                 <p>Movie Details</p>

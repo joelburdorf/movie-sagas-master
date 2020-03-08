@@ -18,9 +18,11 @@ router.put('/:id', (req, res) => {
     // console.log('IN POST WITH:', req.body, req.params);
     console.log('description', req.body.description);
     console.log('sendId', req.body.sendId);
+    console.log('title', req.body.title);
     let id = req.body.sendId;
     let newDescription = req.body.description;
-    const queryText = `UPDATE movies SET "description" = '${newDescription}' WHERE id='${id}';`;
+    let newTitle = req.body.title;
+    const queryText = `UPDATE movies SET "description" = '${newDescription}', "title" = '${newTitle}' WHERE id='${id}';`;
     pool.query(queryText)
         .then(() => {
             res.sendStatus(200);
