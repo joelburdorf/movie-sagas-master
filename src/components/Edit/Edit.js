@@ -63,8 +63,13 @@ class Edit extends Component {
                 <p>Movie Details</p>
                 <h1>{this.props.location.state.title}</h1>
                 <p>{this.props.location.state.description}</p>
-                <input type='text' placeholder="Change Description" name="description" value={this.state.update.description} 
-                onChange={(event) => this.handleDescriptionChange(event, 'description')}></input>
+                <form>
+                    <textarea placeholder="Change Description" value={this.state.update.description}
+                        onChange={(event) => this.handleDescriptionChange(event, 'description')}>
+
+                    </textarea>
+                </form>
+              
                 {/* <input type='text' placeholder="Change Genre" name="genre" value={this.state.update.genre}
                     onChange={(event) => this.handleGenreChange(event, 'genre')}></input> */}
                 <button onClick={this.cancelBtn}>Cancel</button>
