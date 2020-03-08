@@ -8,7 +8,7 @@ class Edit extends Component {
         update: {
             description: '',
             sendId: '',
-            
+            genre: '',
         }
     }
 
@@ -19,13 +19,14 @@ class Edit extends Component {
                 id: this.props.location.state.id,
                 title: this.props.location.state.title,
                 poster: this.props.location.state.poster,
-                description: this.props.location.state.description
+                description: this.props.location.state.description,
+                genre: this.props.location.state.genre
             }
         })
     }
 
-    handleChange = (event, description) => {
-        console.log('event happended in handleChange', event.target.value)
+    handleDescriptionChange = (event, description) => {
+        console.log('event happended in handleDescriptionChange', event.target.value)
         this.setState({
             update: {
                  description: event.target.value,
@@ -33,13 +34,23 @@ class Edit extends Component {
             }
         });
     }
+    // handleGenreChange = (event, genre) => {
+    //     console.log('event happended in handleGenreChange', event.target.value)
+    //     this.setState({
+    //         update: {
+    //             genre: event.target.value,
+    //             sendId: this.props.location.state.id,
+    //         }
+    //     });
+    // }
 
     saveChange = event => {
         event.preventDefault();
         this.props.dispatch({ type: 'INPUT_UPDATE', payload: this.state.update})
         this.setState({
             update: {
-                description: ''
+                description: '',
+                genre: ''
             } 
         });
         this.props.history.push('/')
@@ -52,8 +63,10 @@ class Edit extends Component {
                 <p>Movie Details</p>
                 <h1>{this.props.location.state.title}</h1>
                 <p>{this.props.location.state.description}</p>
-                <input type='text' value={this.state.update.description} 
-                onChange={(event) => this.handleChange(event, 'description')}></input>
+                <input type='text' placeholder="Change Description" name="description" value={this.state.update.description} 
+                onChange={(event) => this.handleDescriptionChange(event, 'description')}></input>
+                {/* <input type='text' placeholder="Change Genre" name="genre" value={this.state.update.genre}
+                    onChange={(event) => this.handleGenreChange(event, 'genre')}></input> */}
                 <button onClick={this.cancelBtn}>Cancel</button>
                 <button onClick={this.saveChange}>Save</button>
             </div>

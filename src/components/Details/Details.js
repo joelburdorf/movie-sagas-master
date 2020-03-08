@@ -15,7 +15,8 @@ class Details extends Component {
                 id: event.id,
                 title: event.title,
                 poster: event.poster,
-                description: event.description
+                description: event.description,
+                genre: event.genre
             }
         });
     };
@@ -28,6 +29,7 @@ class Details extends Component {
                 <p>Movie Details</p>
                 <h1>{this.props.location.state.title}</h1>
                 <p>{this.props.location.state.description}</p>
+                <p><b>{this.props.location.state.genre}</b></p>
                 <button onClick={this.backBtn}>Back</button>
                 <button onClick={() => this.editBtn(this.props.location.state)}>Edit</button>
             </div>
