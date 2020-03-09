@@ -18,14 +18,15 @@ function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchMovies);
     yield takeEvery('INPUT_UPDATE', putUpdate);
 }
-
+//Create function to get movies from Db and then update Redux store
 function* fetchMovies() {
     const getResponse = yield Axios.get('/movies');
     console.log('element array', getResponse);
     yield put({ type: 'SET_MOVIES', payload: getResponse.data })
 }
 
-
+//Create function for PUT call to server to update title/description 
+// of movies in Db then fetch movies from Db
 function* putUpdate(edit) {
     console.log("in saga PUT with: ", edit.payload);
     try {

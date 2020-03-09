@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class Details extends Component {
- 
+    //button to go back to HomeList component
     backBtn = () => {
         this.props.history.push('/')
     }
 
-    //pass props with object to path /edit
+    //editBtn to move to Edit component and pass props with object 
     editBtn = (event) => {
         console.log('in editBtn');
         this.props.history.push({
@@ -22,7 +22,9 @@ class Details extends Component {
         });
     };
 
-    // Renders the entire app on the DOM
+    //access props to display title/description/genre to the DOM
+    //add button to go back to HomeList component
+    //add button to move to Edit component
     render() {
         console.log('in details', this.props.location.state)
         return (
@@ -30,7 +32,7 @@ class Details extends Component {
                 <p>Movie Details</p>
                 <h1>{this.props.location.state.title}</h1>
                 <p>{this.props.location.state.description}</p>
-                <p><b><label>Genre:</label><br />{this.props.location.state.genre}</b></p>
+                <p><b><label>Genre:</label></b><br />{this.props.location.state.genre}</p>
                 <button onClick={this.backBtn}>Back</button>
                 <button onClick={() => this.editBtn(this.props.location.state)}>Edit</button>
             </div>

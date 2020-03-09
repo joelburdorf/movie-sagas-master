@@ -4,7 +4,7 @@ const pool = require('../modules/pool');
 
 //GET movies from Db
 router.get('/', (req, res) => {
-    // 'SELECT * FROM movies'
+    // GET movies and genres by joining with genre_reference table
     const queryText = 'SELECT * FROM movies JOIN genre_reference_table ON movies.id = genre_reference_table.movie_id JOIN genres ON genres.id = genre_reference_table.genre_id ORDER BY movies.id;';
     pool.query(queryText)
         .then((result) => { res.send(result.rows); })
@@ -16,9 +16,10 @@ router.get('/', (req, res) => {
 
 router.put('/:id', (req, res) => {
     // console.log('IN POST WITH:', req.body, req.params);
-    console.log('description', req.body.description);
-    console.log('sendId', req.body.sendId);
-    console.log('title', req.body.title);
+    // console.log('description', req.body.description);
+    // console.log('sendId', req.body.sendId);
+    // console.log('title', req.body.title);
+    //create SQL query to UPDATE title/description for id
     let id = req.body.sendId;
     let newDescription = req.body.description;
     let newTitle = req.body.title;
@@ -28,7 +29,7 @@ router.put('/:id', (req, res) => {
             res.sendStatus(200);
         })
         .catch(err => {
-            console.log("Error changing description", err);
+            console.log("Error changing description or title", err);
             res.sendStatus(500);
         });
 })

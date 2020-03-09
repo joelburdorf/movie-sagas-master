@@ -13,15 +13,7 @@ class App extends Component {
         <div className="App">
               <header className="App-header">
               <h1 className="App-title">Welcome to the Show</h1>
-              {/* <nav>
-                <ul>
-                  <li><Link to="/">Movie List</Link></li>
-                  <li><Link to="/details">Details</Link></li>
-                  <li><Link to="/edit">Edit</Link></li>
-                </ul>
-              </nav> */}
-                  </header>
-
+              </header>
             <div className="content-container">
               <Route exact path="/" component={HomeList} />
               <Route path="/details" component={Details} />

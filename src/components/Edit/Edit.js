@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class Edit extends Component {
-    // set state to values from before
+    // set state to values passed down from props
     state = {
         update: {
             description: this.props.location.state.description,
@@ -33,7 +33,8 @@ class Edit extends Component {
             }
         });
     }
-
+    //dispatch changes to Sagas to update description and title
+    //then move to HomeList component
     saveChange = event => {
         event.preventDefault();
         this.props.dispatch({ type: 'INPUT_UPDATE', payload: this.state.update})
