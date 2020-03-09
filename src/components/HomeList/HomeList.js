@@ -30,10 +30,10 @@ class HomeList extends Component {
     // Map through movies and add each Title/Poster/Description to the DOM
     render() {
         return (
-            <div>
+            <div className="container">
                 <p>Movie Selections</p>
                 <ul className="container">
-                    {this.props.reduxState.movies.map(flick => (<li className="container" key={flick.movie_id}><h1>{flick.title}</h1> 
+                    {this.props.reduxState.movies.map(flick => (<li key={flick.movie_id}><h1>{flick.title}</h1> 
                         <img src={flick.poster} alt={flick.title} onClick={(event) => this.imageClick(event, flick)}></img>
                         <br /> <br />{flick.description}<br /> <br /><br /> <br />
                         </li>))}
