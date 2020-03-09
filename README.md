@@ -1,9 +1,17 @@
 # Project Name
-
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+## movies-sagas-master
 
 ## Description
 
-Your project description goes here. What problem did you solve? How did you solve it?
+### This is an App that allows users to view a list of movies from the database. The user is allowed to click on the movie poster to select it and then move to a page to see addition details. From the details page the user is able to either go back to the home or list page, or edit the movie title and description, then save to make the changes in the Db via sagas and redux. Fun!
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+## Technologies
+### Node
+### React
+### Sagas
+### Redux
+### React Routers
+### Axios
+### Express
+### SQL Db
+
